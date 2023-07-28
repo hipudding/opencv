@@ -147,6 +147,9 @@ inline _InputArray::_InputArray(const double& val)
 inline _InputArray::_InputArray(const cuda::GpuMat& d_mat)
 { init(CUDA_GPU_MAT + ACCESS_READ, &d_mat); }
 
+inline _InputArray::_InputArray(const cann::AclMat& a_mat)
+{ init(ACL_MAT + ACCESS_READ, &a_mat); }
+
 inline _InputArray::_InputArray(const std::vector<cuda::GpuMat>& d_mat)
 {	init(STD_VECTOR_CUDA_GPU_MAT + ACCESS_READ, &d_mat);}
 
@@ -271,6 +274,9 @@ _OutputArray::_OutputArray(const _Tp* vec, int n)
 inline _OutputArray::_OutputArray(cuda::GpuMat& d_mat)
 { init(CUDA_GPU_MAT + ACCESS_WRITE, &d_mat); }
 
+inline _OutputArray::_OutputArray(cann::AclMat& a_mat)
+{ init(ACL_MAT + ACCESS_WRITE, &a_mat); }
+
 inline _OutputArray::_OutputArray(std::vector<cuda::GpuMat>& d_mat)
 {	init(STD_VECTOR_CUDA_GPU_MAT + ACCESS_WRITE, &d_mat);}
 
@@ -295,6 +301,8 @@ inline _OutputArray::_OutputArray(const std::vector<UMat>& vec)
 inline _OutputArray::_OutputArray(const cuda::GpuMat& d_mat)
 { init(FIXED_TYPE + FIXED_SIZE + CUDA_GPU_MAT + ACCESS_WRITE, &d_mat); }
 
+inline _OutputArray::_OutputArray(const cann::AclMat& a_mat)
+{ init(FIXED_TYPE + FIXED_SIZE + ACL_MAT + ACCESS_WRITE, &a_mat); }
 
 inline _OutputArray::_OutputArray(const ogl::Buffer& buf)
 { init(FIXED_TYPE + FIXED_SIZE + OPENGL_BUFFER + ACCESS_WRITE, &buf); }
