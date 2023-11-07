@@ -3,7 +3,7 @@ name: OCV Contrib PR:4.x openEuler CANN
 on:
   pull_request:
     branches:
-      - main
+      - 4.x
   #   paths:
   #     - '.github/workflows/OCV-Contrib-PR-4.x-openEuler-CANN.yaml'
   #   label:
