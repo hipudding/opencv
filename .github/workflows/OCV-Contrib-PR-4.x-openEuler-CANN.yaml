@@ -33,7 +33,7 @@ jobs:
         shell: bash
     container:
       image: huafengchun/ci
-      options: --device /dev/davinci0 --device /dev/davinci_manager --device /dev/devmm_svm --device /dev/hisi_hdc
+      options: --device /dev/davinci0 --device /dev/davinci_manager --device /dev/devmm_svm --device /dev/hisi_hdc --env-file /home/opencv-cn/git_cache/proxy
       volumes:
         - /home/opencv-cn/git_cache:/home/ci/git_cache
         - /home/opencv-cn/ci_cache/opencv:/home/ci/.ccache
@@ -46,12 +46,6 @@ jobs:
     - name: Brief system information
       timeout-minutes: 60
       run: bash ${{ env.GIT_CACHE_DOCKER }}/print_system_information.sh
-    - name: configure proxy
-      timeout-minutes: 60
-      run: |
-        source ${{ env.GIT_CACHE_DOCKER }}/proxy.sh
-        echo "::set-env name=http_proxy::$http_proxy"
-        echo "::set-env name=https_proxy::$https_proxy"
     - name: Define proper HOME path
       timeout-minutes: 60
       run: echo "HOME=/home/ci" >> $GITHUB_ENV
