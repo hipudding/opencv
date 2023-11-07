@@ -4,11 +4,6 @@ on:
   pull_request:
     branches:
       - main
-    paths:
-      - '.github/workflows/OCV-Contrib-PR-4.x-openEuler-CANN.yaml'
-    label:
-      - 'category:cann'
-  workflow_call:
 
 concurrency:
   group: OCV-Contrib-PR-4.x-openEuler-CANN-${{ github.ref }}
