@@ -4,6 +4,11 @@ on:
   pull_request:
     branches:
       - main
+  #   paths:
+  #     - '.github/workflows/OCV-Contrib-PR-4.x-openEuler-CANN.yaml'
+  #   label:
+  #     - 'category:cann'
+  # workflow_call:
 
 concurrency:
   group: OCV-Contrib-PR-4.x-openEuler-CANN-${{ github.ref }}
@@ -28,6 +33,11 @@ jobs:
         shell: bash
     container:
       image: ci
+      options:
+        - /dev/davinci0
+        - /dev/davinci_manager
+        - /dev/devmm_svm
+        - /dev/hisi_hdc
       volumes:
         - /home/opencv-cn/git_cache:/home/ci/git_cache
         - /home/opencv-cn/ci_cache/opencv:/home/ci/.ccache
@@ -35,11 +45,7 @@ jobs:
         - /usr/local/dcmi:/usr/local/dcmi
         - /usr/local/bin/npu-smi:/usr/local/bin/npu-smi
         - /usr/local/Ascend/driver/lib64/:/usr/local/Ascend/driver/lib64/
-      devices:
-        - /dev/davinci0
-        - /dev/davinci_manager
-        - /dev/devmm_svm
-        - /dev/hisi_hdc
+
     steps:
     - name: Brief system information
       timeout-minutes: 60
